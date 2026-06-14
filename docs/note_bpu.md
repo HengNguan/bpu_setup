@@ -28,7 +28,7 @@ docker pull --platform linux/amd64 registry.d-robotics.cc/deliver/ai_toolchain_u
 ---
 
 ## 🚀 Step 2: Running the Container
-A helper script [run_openexplorer.sh](file:///Users/hengnguan/sandbox/bpu_setup/run_openexplorer.sh) has been created to easily launch the toolchain container with directory mounts.
+A helper script [run_openexplorer.sh](file:///Users/hengnguan/sandbox/bpu_setup/scripts/run_openexplorer.sh) has been created to easily launch the toolchain container with directory mounts.
 
 ### Startup Script Details
 The script executes:
@@ -49,8 +49,8 @@ docker run -it --rm \
 ### Launching:
 From your host terminal, run:
 ```bash
-chmod +x run_openexplorer.sh
-./run_openexplorer.sh
+chmod +x scripts/run_openexplorer.sh
+./scripts/run_openexplorer.sh
 ```
 
 ---
@@ -62,11 +62,24 @@ Once inside the container, you can convert floating-point models (e.g., ONNX) in
 When using OpenExplorer, it is recommended to set up your workspace as follows:
 ```text
 bpu_setup/
-├── run_openexplorer.sh    # Docker runner
-├── note_bpu.md            # This notes file
-├── models/                # ONNX models (.onnx)
-├── data/                  # Calibration dataset (subset of real images/tensors)
-└── workspace/             # Compiler outputs and configuration files
+├── bpu_setup.code-workspace # IDE workspace configuration
+├── readme.md              # Performance report and instructions
+├── configs/               # BPU compiler configuration files
+│   ├── config.yaml
+│   └── ...
+├── scripts/               # Python & Shell scripts
+│   ├── generate_model.py
+│   ├── run_comparisons.py
+│   ├── run_openexplorer.sh
+│   └── open_devcontainer.command
+├── docs/                  # Documentation and development skills
+│   ├── note_bpu.md
+│   ├── model_convert.md
+│   └── skills.md
+├── models/                # Input float32 ONNX models
+├── data/                  # Calibration datasets
+├── logs/                  # Compilation and perf logs (ignored by git)
+└── workspace/             # Compiler outputs and performance profiling results
 ```
 
 ### 📋 Model Compilation Stages:

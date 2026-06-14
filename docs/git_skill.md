@@ -33,6 +33,7 @@ Create `.gitignore` in the project root:
 
 ```text
 # Logs
+logs/
 *.log
 
 # OS-specific files

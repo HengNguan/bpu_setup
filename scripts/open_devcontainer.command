@@ -1,27 +1,28 @@
 #!/bin/bash
-# Get the directory where this script is located
+# Get the directory where this script is located and the project root
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$( dirname "$DIR" )"
 
 echo "--------------------------------------------------------"
 echo "Opening BPU Setup Workspace in Dev Container..."
-echo "Host Workspace Path: $DIR"
+echo "Host Workspace Path: $PROJECT_ROOT"
 echo "--------------------------------------------------------"
 
 # 1. Try launching using the registered vscode:// URI scheme to open the workspace file
 echo "Attempting launch via vscode:// URI scheme..."
-if open "vscode://file${DIR}/bpu_setup.code-workspace"; then
+if open "vscode://file${PROJECT_ROOT}/bpu_setup.code-workspace"; then
     echo "Successfully sent open request to VS Code."
 else
     # 2. Fallback to using VS Code CLI 'code' if installed in PATH
     echo "Fallback: Checking for 'code' CLI in PATH..."
     if command -v code >/dev/null 2>&1; then
-        code "${DIR}/bpu_setup.code-workspace"
+        code "${PROJECT_ROOT}/bpu_setup.code-workspace"
         echo "Launched using 'code' command."
     else
         # 3. Fallback to opening VS Code application bundle directly
         echo "Fallback: Checking for Visual Studio Code App Bundle..."
         if [ -d "/Applications/Visual Studio Code.app" ]; then
-            open -b com.microsoft.VSCode --args "${DIR}/bpu_setup.code-workspace"
+            open -b com.microsoft.VSCode --args "${PROJECT_ROOT}/bpu_setup.code-workspace"
             echo "Launched using com.microsoft.VSCode Bundle ID."
         else
             echo "Error: Visual Studio Code could not be found or launched."

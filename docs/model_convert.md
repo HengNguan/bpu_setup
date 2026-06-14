@@ -28,14 +28,14 @@ For quantization calibration, we generated:
 ## 🏃 Execution Steps
 
 ### Step 1: Export the ONNX model & Calibration Data
-We ran the script [generate_model.py](file:///Users/hengnguan/sandbox/bpu_setup/generate_model.py) inside the Docker container to produce the assets:
+We ran the script [generate_model.py](file:///Users/hengnguan/sandbox/bpu_setup/scripts/generate_model.py) inside the Docker container to produce the assets:
 ```bash
 docker run --rm \
     -v "$(pwd)":/workspace \
     -w /workspace \
     --platform linux/amd64 \
     registry.d-robotics.cc/deliver/ai_toolchain_ubuntu_20_x5_cpu:v1.2.8 \
-    python3 generate_model.py
+    python3 scripts/generate_model.py
 ```
 
 ### Step 2: Validate Compatibility with BPU Checker
@@ -54,7 +54,7 @@ docker run --rm \
 *Result: All nodes mapped successfully, showing compatibility.*
 
 ### Step 3: Configure Compilation YAML
-We defined [config.yaml](file:///Users/hengnguan/sandbox/bpu_setup/config.yaml) to map the model to `int8` quantization using our calibration folder:
+We defined [config.yaml](file:///Users/hengnguan/sandbox/bpu_setup/configs/config.yaml) to map the model to `int8` quantization using our calibration folder:
 - **March:** `bayes-e` (X5 BPU)
 - **Input Type:** `featuremap` / `NCHW`
 - **Calibration Type:** `default` (uses KL-divergence method with the dummy bin inputs)
@@ -68,7 +68,7 @@ docker run --rm \
     --platform linux/amd64 \
     registry.d-robotics.cc/deliver/ai_toolchain_ubuntu_20_x5_cpu:v1.2.8 \
     hb_mapper makertbin \
-    --config config.yaml \
+    --config configs/config.yaml \
     --model-type onnx
 ```
 

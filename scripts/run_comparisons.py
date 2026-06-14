@@ -37,7 +37,8 @@ def create_config(compile_mode, working_dir, prefix):
         }
     }
     
-    yaml_path = f"config_{prefix}.yaml"
+    os.makedirs("configs", exist_ok=True)
+    yaml_path = f"configs/config_{prefix}.yaml"
     with open(yaml_path, 'w') as f:
         yaml.dump(config, f)
     return yaml_path
@@ -138,11 +139,11 @@ To regenerate this report or compile the configurations individually:
 
 1. **Enter the Docker toolchain container:**
    ```bash
-   ./run_openexplorer.sh
+   ./scripts/run_openexplorer.sh
    ```
 2. **Execute the comparison script inside the container:**
    ```bash
-   python3 run_comparisons.py
+   python3 scripts/run_comparisons.py
    ```
 """
     

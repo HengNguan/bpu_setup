@@ -33,9 +33,15 @@ To regenerate this report or compile the configurations individually:
 
 1. **Enter the Docker toolchain container:**
    ```bash
-   ./run_openexplorer.sh
+   ./scripts/run_openexplorer.sh
    ```
 2. **Execute the comparison script inside the container:**
    ```bash
-   python3 run_comparisons.py
+   python3 scripts/run_comparisons.py
    ```
+
+---
+
+## 🗃️ Development & Version Control Guidelines
+
+For standard Git workflows, remote repository mapping, and details on what files/model artifacts to track vs. ignore, please refer to the **[Git Version Control & Deployment Guide](file:///Users/hengnguan/sandbox/bpu_setup/docs/git_skill.md)**.
