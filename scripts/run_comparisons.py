@@ -6,10 +6,10 @@ import re
 def create_config(compile_mode, working_dir, prefix):
     config = {
         'model_parameters': {
-            'onnx_model': 'models/simple_net.onnx',
+            'onnx_model': '../models/simple_net.onnx',
             'output_model_file_prefix': prefix,
             'march': 'bayes-e', # Target X5 BPU (bayes-e)
-            'working_dir': working_dir,
+            'working_dir': f'../{working_dir}',
             'layer_out_dump': False,
             'remove_node_type': 'Quantize;Transpose;Dequantize;Cast;Reshape;Softmax;DequantizeFilter'
         },
@@ -23,7 +23,7 @@ def create_config(compile_mode, working_dir, prefix):
             'norm_type': 'no_preprocess'
         },
         'calibration_parameters': {
-            'cal_data_dir': './data/calibration_data',
+            'cal_data_dir': '../data/calibration_data',
             'cal_data_type': 'float32',
             'calibration_type': 'default',
             'optimization': 'run_fast',
@@ -73,12 +73,16 @@ def main():
         print(f"\n==================== Target: {t['label']} ====================")
         yaml_path = create_config(t['mode'], t['dir'], t['prefix'])
         
+        # Clean old binary if it exists
+        bin_path = os.path.join(t['dir'], f"{t['prefix']}.bin")
+        if os.path.exists(bin_path):
+            os.remove(bin_path)
+            
         # Compile model
         print(f"Compiling model with mode '{t['mode']}'...")
         compile_output = run_command(f"hb_mapper makertbin --config {yaml_path} --model-type onnx")
         
         # Profile model
-        bin_path = os.path.join(t['dir'], f"{t['prefix']}.bin")
         if os.path.exists(bin_path):
             print("Profiling compiled model...")
             perf_output = run_command(f"hb_perf {bin_path}")
@@ -94,6 +98,8 @@ def main():
             })
         else:
             print(f"Error: Compiled binary not found at {bin_path}")
+            print("Compilation Output:")
+            print(compile_output)
             results.append({
                 "label": t['label'],
                 "mode": t['mode'],

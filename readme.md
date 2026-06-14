@@ -39,9 +39,3 @@ To regenerate this report or compile the configurations individually:
    ```bash
    python3 scripts/run_comparisons.py
    ```
-
----
-
-## 🗃️ Development & Version Control Guidelines
-
-For standard Git workflows, remote repository mapping, and details on what files/model artifacts to track vs. ignore, please refer to the **[Git Version Control & Deployment Guide](file:///Users/hengnguan/sandbox/bpu_setup/docs/git_skill.md)**.
