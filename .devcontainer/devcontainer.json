@@ -13,6 +13,9 @@
   // Mount the host workspace directory to /workspace in the container
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
   "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,readonly"
+  ],
 
   // Customize settings and install extensions inside the container
   "customizations": {
