@@ -1,0 +1,26 @@
+# Configuration for Horizon BPU model compiler
+model_parameters:
+  march: bayes-e
+  working_dir: workspace/model_output
+  layer_out_dump: false
+  remove_node_type: Quantize;Transpose;Dequantize;Cast;Reshape;Softmax;DequantizeFilter
+
+input_parameters:
+  input_name: 'input'
+  input_shape: '1x3x224x224'
+  input_layout_train: NCHW
+  input_layout_rt: NCHW
+  input_type_train: featuremap
+  input_type_rt: featuremap
+  norm_type: no_preprocess
+
+calibration_parameters:
+  calibration_type: skip
+  optimization: run_fast
+  preprocess_on: false
+
+compiler_parameters:
+  compile_mode: latency
+  core_num: 1
+  optimize_level: O3
+  debug: true

@@ -1,0 +1,9 @@
+# Logs
+*.log
+
+# Compiler / Intermediate outputs
+.hb_check/
+workspace/
+
+# OS specific files
+.DS_Store

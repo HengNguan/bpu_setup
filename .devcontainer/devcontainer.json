@@ -1,0 +1,30 @@
+{
+  "name": "Horizon BPU OpenExplorer Toolchain",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "runArgs": [
+    "--platform", "linux/amd64"
+  ],
+  // Mount the host workspace directory to /workspace in the container
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+
+  // Customize settings and install extensions inside the container
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-vscode.cpptools",       // C/C++ Intellisense for compiler/runtime
+        "ms-python.python",         // Python development support
+        "redhat.vscode-yaml"        // YAML support for compiler configurations
+      ]
+    }
+  },
+
+  // Runs as root since toolchain utilities and setups might require root permissions
+  "remoteUser": "root"
+}
