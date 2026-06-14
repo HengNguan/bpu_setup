@@ -13,7 +13,7 @@
         "DDR megabytes per second": 5999.1,
         "FPS": 2107.98,
         "HBDK version": "3.49.15",
-        "compiling options": "-f hbir -m /tmp/tmp_2c3g8be/torch_jit_subgraph_0.hbir -o /tmp/tmp_2c3g8be/torch_jit_subgraph_0.hbm --march bayes-e --progressbar --input-layout NHWC --output-layout NHWC",
+        "compiling options": "-f hbir -m /tmp/tmpz60s306o/torch_jit_subgraph_0.hbir -o /tmp/tmpz60s306o/torch_jit_subgraph_0.hbm --march bayes-e --progressbar --input-layout NHWC --output-layout NHWC",
         "frame per run": 1,
         "frame per second": 2107.98,
         "input features": [
@@ -84,7 +84,7 @@
         "loaded bytes per frame": 1578688,
         "loaded bytes per run": 1578688,
         "model json CRC": "22db627d",
-        "model json file": "/tmp/tmp_2c3g8be/torch_jit_subgraph_0.hbir",
+        "model json file": "/tmp/tmpz60s306o/torch_jit_subgraph_0.hbir",
         "model name": "torch_jit_subgraph_0",
         "model param CRC": "00000000",
         "multicore sync time (ms)": 0.0,

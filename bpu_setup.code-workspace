@@ -2,14 +2,13 @@
   "folders": [
     {
       "name": "BPU Setup (Root)",
-      "uri": "vscode-remote://dev-container+2f55736572732f68656e676e6775616e2f73616e64626f782f6270755f7365747570/workspace"
+      "path": "."
     },
     {
       "name": "Model Workspace (Outputs)",
-      "uri": "vscode-remote://dev-container+2f55736572732f68656e676e6775616e2f73616e64626f782f6270755f7365747570/workspace/workspace"
+      "path": "workspace"
     }
   ],
-  "remoteAuthority": "dev-container+2f55736572732f68656e676e6775616e2f73616e64626f782f6270755f7365747570",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   }

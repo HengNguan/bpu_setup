@@ -2,7 +2,10 @@
   "name": "Horizon BPU OpenExplorer Toolchain",
   "build": {
     "dockerfile": "Dockerfile",
-    "context": "."
+    "context": ".",
+    "options": [
+      "--platform=linux/amd64"
+    ]
   },
   "runArgs": [
     "--platform", "linux/amd64"
