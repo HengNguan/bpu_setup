@@ -1,7 +1,9 @@
 # Configuration for Horizon BPU model compiler
 model_parameters:
+  onnx_model: 'models/simple_net.onnx'
+  output_model_file_prefix: 'simple_net'
   march: bayes-e
-  working_dir: workspace/model_output
+  working_dir: 'workspace/model_output'
   layer_out_dump: false
   remove_node_type: Quantize;Transpose;Dequantize;Cast;Reshape;Softmax;DequantizeFilter
 
@@ -15,7 +17,9 @@ input_parameters:
   norm_type: no_preprocess
 
 calibration_parameters:
-  calibration_type: skip
+  cal_data_dir: './data/calibration_data'
+  cal_data_type: 'float32'
+  calibration_type: default
   optimization: run_fast
   preprocess_on: false
 

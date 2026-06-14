@@ -1,0 +1,9 @@
+// the test
+digraph model {
+	input [label=input color=black]
+	torch_jit_subgraph_0 [label="name: torch_jit_subgraph_0
+type: BPU" color=black fillcolor=cadetblue shape=box style=filled]
+	output [label=output color=black]
+	input -> torch_jit_subgraph_0 [label="1x3x224x224, INT8, NCHW, INT8" color=red]
+	torch_jit_subgraph_0 -> output [label="1x2, INT8" color=red]
+}

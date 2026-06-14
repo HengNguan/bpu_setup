@@ -1,0 +1,26 @@
+calibration_parameters:
+  cal_data_dir: ./data/calibration_data
+  cal_data_type: float32
+  calibration_type: default
+  optimization: run_fast
+  preprocess_on: false
+compiler_parameters:
+  compile_mode: latency
+  core_num: 1
+  debug: true
+  optimize_level: O3
+input_parameters:
+  input_layout_rt: NCHW
+  input_layout_train: NCHW
+  input_name: input
+  input_shape: 1x3x224x224
+  input_type_rt: featuremap
+  input_type_train: featuremap
+  norm_type: no_preprocess
+model_parameters:
+  layer_out_dump: false
+  march: bayes
+  onnx_model: models/simple_net.onnx
+  output_model_file_prefix: simple_net_j5
+  remove_node_type: Quantize;Transpose;Dequantize;Cast;Reshape;Softmax;DequantizeFilter
+  working_dir: workspace/model_output_j5

@@ -1,0 +1,77 @@
+{
+    "/conv/Conv": {
+        "type": "Conv",
+        "inputs": [
+            "input_calibrated"
+        ],
+        "outputs": [
+            "/conv/Conv_output_0"
+        ],
+        "thresholds": [
+            [
+                4.785731
+            ]
+        ],
+        "cosine_similarity": "0.999936"
+    },
+    "/relu/Relu": {
+        "type": "Relu",
+        "inputs": [
+            "/conv/Conv_output_0"
+        ],
+        "outputs": [
+            "/relu/Relu_output_0"
+        ],
+        "thresholds": [
+            []
+        ],
+        "cosine_similarity": "0.999875"
+    },
+    "/pool/GlobalAveragePool": {
+        "type": "GlobalAveragePool",
+        "inputs": [
+            "/relu/Relu_output_0_calibrated"
+        ],
+        "outputs": [
+            "/pool/GlobalAveragePool_output_0"
+        ],
+        "thresholds": [
+            [
+                3.094243
+            ]
+        ],
+        "cosine_similarity": "0.999994"
+    },
+    "/fc/Gemm": {
+        "type": "Conv",
+        "inputs": [
+            "/pool/GlobalAveragePool_output_0_calibrated"
+        ],
+        "outputs": [
+            "transposed_replaced_output"
+        ],
+        "thresholds": [
+            [
+                0.343619
+            ]
+        ],
+        "cosine_similarity": "0.999997"
+    },
+    "/fc/Gemm_transpose_output_reshape": {
+        "type": "Reshape",
+        "inputs": [
+            "transposed_replaced_output_calibrated",
+            "/fc/Gemm_reshape_output_shape_dim4"
+        ],
+        "outputs": [
+            "output"
+        ],
+        "thresholds": [
+            [
+                0.150735
+            ],
+            []
+        ],
+        "cosine_similarity": "0.999997"
+    }
+}

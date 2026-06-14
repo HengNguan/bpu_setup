@@ -1,0 +1,120 @@
+{
+    "/conv/Conv": {
+        "type": "Conv",
+        "inputs": [
+            "input_calibrated"
+        ],
+        "outputs": [
+            "/conv/Conv_output_0"
+        ],
+        "thresholds": [
+            [
+                5.044623
+            ]
+        ],
+        "cosine_similarity": "0.999931"
+    },
+    "/relu/Relu": {
+        "type": "Relu",
+        "inputs": [
+            "/conv/Conv_output_0"
+        ],
+        "outputs": [
+            "/relu/Relu_output_0"
+        ],
+        "thresholds": [
+            []
+        ],
+        "cosine_similarity": "0.999861"
+    },
+    "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_0": {
+        "type": "Conv",
+        "inputs": [
+            "/relu/Relu_output_0_calibrated"
+        ],
+        "outputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_0"
+        ],
+        "thresholds": [
+            [
+                3.319622
+            ]
+        ],
+        "cosine_similarity": "0.999979"
+    },
+    "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_1": {
+        "type": "Conv",
+        "inputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_0_calibrated"
+        ],
+        "outputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_1"
+        ],
+        "thresholds": [
+            [
+                0.5474
+            ]
+        ],
+        "cosine_similarity": "0.999992"
+    },
+    "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_2": {
+        "type": "Conv",
+        "inputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_1_calibrated"
+        ],
+        "outputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_2"
+        ],
+        "thresholds": [
+            [
+                0.385571
+            ]
+        ],
+        "cosine_similarity": "0.999994"
+    },
+    "/pool/GlobalAveragePool": {
+        "type": "Conv",
+        "inputs": [
+            "/pool/GlobalAveragePool_SPLIT_WITH_DEPTHWISE_CONV_2_calibrated"
+        ],
+        "outputs": [
+            "/pool/GlobalAveragePool_output_0"
+        ],
+        "thresholds": [
+            [
+                0.351049
+            ]
+        ],
+        "cosine_similarity": "0.999994"
+    },
+    "/fc/Gemm": {
+        "type": "Conv",
+        "inputs": [
+            "/pool/GlobalAveragePool_output_0_calibrated"
+        ],
+        "outputs": [
+            "replaced_output"
+        ],
+        "thresholds": [
+            [
+                0.345135
+            ]
+        ],
+        "cosine_similarity": "1.000000"
+    },
+    "/fc/Gemm_reshape_output": {
+        "type": "Reshape",
+        "inputs": [
+            "replaced_output",
+            "/fc/Gemm_reshape_output_shape_dim4"
+        ],
+        "outputs": [
+            "output"
+        ],
+        "thresholds": [
+            [],
+            []
+        ],
+        "cosine_similarity": "1.000000"
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "summary": {
+        "BPU OPs per frame (effective)": 43352128,
+        "BPU OPs per run (effective)": 43352128,
+        "BPU PE number": 1,
+        "BPU core number": 1,
+        "BPU march": "BAYES",
+        "DDR bytes per frame": 173648,
+        "DDR bytes per run": 173648,
+        "DDR bytes per second": 3688621397,
+        "DDR megabytes per frame": 0.166,
+        "DDR megabytes per run": 0.166,
+        "DDR megabytes per second": 3517.7,
+        "FPS": 21241.95,
+        "HBDK version": "3.49.15",
+        "compiling options": "-f hbir -m /tmp/tmp919_v78l/torch_jit_subgraph_0.hbir -o /tmp/tmp919_v78l/torch_jit_subgraph_0.hbm --march bayes --progressbar --O3 --cache /workspace/workspace/model_output_j5/cache.json --debug --core-num 1 --fast --input-layout NHWC --output-layout NHWC --input-source ddr",
+        "frame per run": 1,
+        "frame per second": 21241.95,
+        "input features": [
+            [
+                "input name",
+                "input size"
+            ],
+            [
+                "input_calibrated_quantized",
+                "1x3x224x224"
+            ]
+        ],
+        "interval computing unit utilization": [
+            0.0,
+            0.0,
+            0.0,
+            0.074,
+            1.0,
+            0.989,
+            1.0,
+            1.0,
+            0.989,
+            0.275
+        ],
+        "interval computing units utilization": [
+            0.0,
+            0.0,
+            0.0,
+            0.074,
+            1.0,
+            0.989,
+            1.0,
+            1.0,
+            0.989,
+            0.275
+        ],
+        "interval loading bandwidth (megabytes/s)": [
+            8325,
+            8358,
+            8392,
+            8110,
+            4003,
+            88,
+            0,
+            0,
+            0,
+            0
+        ],
+        "interval number": 10,
+        "interval storing bandwidth (megabytes/s)": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+        ],
+        "interval time (ms)": 0.005,
+        "latency (ms)": 0.05,
+        "latency (ms) by segments": [
+            0.047
+        ],
+        "latency (us)": 47.1,
+        "layer details": [
+            [
+                "layer",
+                "ops",
+                "original output shape",
+                "aligned output shape",
+                "computing cost (no DDR)",
+                "load/store cost",
+                "active period of time"
+            ],
+            [
+                "/conv/Conv-conv",
+                "43,352,064",
+                "[1,224,224,16]",
+                "[1,224,224,16]",
+                "15 us (31.7% of model)",
+                "21 us (43.6% of model)",
+                "0 ~ 41 us (41)"
+            ],
+            [
+                "/pool/GlobalAveragePool",
+                "0",
+                "[1,1,1,16]",
+                "[1,1,1,256]",
+                "5 us (11.4% of model)",
+                "0",
+                "41 ~ 46 us (5)"
+            ],
+            [
+                "/fc/Gemm",
+                "64",
+                "[1,1,1,2]",
+                "[1,2,16,16]",
+                "<1 us",
+                "1 us (1.9% of model)",
+                "21 ~ 46 us (25)"
+            ],
+            [
+                "/fc/Gemm_NHWC2NCHW_LayoutConvert_Output0_reshape",
+                "0",
+                "[1,1,1,2]",
+                "[1,1,1,256]",
+                "<1 us",
+                "<1 us",
+                "46 ~ 47 us (1)"
+            ]
+        ],
+        "loaded bytes per frame": 173632,
+        "loaded bytes per run": 173632,
+        "model json CRC": "5c792715",
+        "model json file": "/tmp/tmp919_v78l/torch_jit_subgraph_0.hbir",
+        "model name": "torch_jit_subgraph_0",
+        "model param CRC": "00000000",
+        "multicore sync time (ms)": 0.0,
+        "run per second": 21241.95,
+        "runtime version": "3.15.55.0",
+        "stored bytes per frame": 16,
+        "stored bytes per run": 16,
+        "worst FPS": 21241.95
+    }
+}
